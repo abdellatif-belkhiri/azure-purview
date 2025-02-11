@@ -1,0 +1,252 @@
+{
+    "name": "azure-purview",
+    "label": "Azure-Purview",
+    "description": "Azure Purview connector helps discover, classify, and manage your data estate. It provides unified data governance with built-in scalability and compliance capabilities.",
+    "publisher": "Community",
+    "contributor": "ABelkhiri,mai.alem",
+    "version": "1.0.0",
+    "category": "Data classfication",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
+    "help_online": "",
+    "configuration": {
+      "fields": [
+        {
+          "title": "Get Access Token",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "On behalf of User - Delegate Permissions",
+            "Without a User - Application Permissions"
+          ],
+          "name": "auth_type",
+          "value": "Without a User - Application Permissions",
+          "description": "Select the method using which you will get access tokens used to access the Azure Purview APIs.",
+          "onchange": {
+            "Without a User - Application Permissions": [
+              {
+                "title": "Server URL",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "resource",
+                "value": "https://purview.azure.net",
+                "description": "The service-based URI to connect and perform the automated operations. "
+              },
+              {
+                "title": "Client ID",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "client_id",
+                "description": "Unique API ID of the Azure AD application that is used to create an authentication token required to access the API. "
+              },
+              {
+                "title": "Client Secret",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "password",
+                "name": "client_secret",
+                "description": "Unique API Secret of the Azure AD application that is used to create an authentication token required to access the API. "
+              },
+              {
+                "title": "Tenant ID",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "tenant_id",
+                "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
+              },
+              {
+                "title": "Resource Group Name",
+                "name": "resource_group_name",
+                "type": "text",
+                "tooltip": "Name of the resource group that holds resources on the Azure Portal. ",
+                "description": "Name of the resource group that holds resources on the Azure Portal. ",
+                "required": true,
+                "editable": true,
+                "visible": true
+              },
+              {
+                "title": "API Version",
+                "name": "api_version",
+                "type": "text",
+                "tooltip": "Specify the API version to use for all automated operations using this connector. ",
+                "description": "Specify the API version to use for all automated operations using this connector. ",
+                "required": false,
+                "editable": true,
+                "visible": true
+              },
+              {
+                "title": "Verify SSL",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "checkbox",
+                "name": "verify_ssl",
+                "value": true,
+                "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+              }
+            ],
+            "On behalf of User - Delegate Permissions": [
+              {
+                "title": "Server URL",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "resource",
+                "value": "https://management.azure.com",
+                "description": "The service-based URI to connect and perform the automated operations. "
+              },
+              {
+                "title": "Client ID",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "client_id",
+                "description": "Unique API ID of the Azure AD application that is used to create an authentication token required to access the API. "
+              },
+              {
+                "title": "Client Secret",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "password",
+                "name": "client_secret",
+                "description": "Unique API Secret of the Azure AD application that is used to create an authentication token required to access the API. "
+              },
+              {
+                "title": "Tenant ID",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "tenant_id",
+                "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
+              },
+              {
+                "title": "Auth Code",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "password",
+                "name": "code",
+                "tooltip": "The authorization code that you acquired during the authorization step.",
+                "description": "The authorization code that you acquired during the authorization step."
+              },
+              {
+                "title": "Resource Group Name",
+                "name": "resource_group_name",
+                "type": "text",
+                "tooltip": "Name of the resource group that holds resources on the Azure Portal. ",
+                "description": "Name of the resource group that holds resources on the Azure Portal. ",
+                "required": true,
+                "editable": true,
+                "visible": true
+              },
+              {
+                "title": "API Version",
+                "name": "api_version",
+                "type": "text",
+                "tooltip": "Specify the API version to use for all automated operations using this connector. ",
+                "description": "Specify the API version to use for all automated operations using this connector. ",
+                "required": true,
+                "editable": true,
+                "visible": true
+              },
+              {
+                "title": "Redirect URL",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "redirect_url",
+                "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri you registered in the app registration portal."
+              },
+              {
+                "title": "Verify SSL",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "checkbox",
+                "name": "verify_ssl",
+                "value": true,
+                "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "operations": [
+      {
+        "operation": "get_Alerts",
+        "title": "Get Alerts",
+        "description": "get Alerts. ",
+        "category": "investigation",
+        "annotation": "get_alerts",
+        "parameters": [
+          {
+            "title": "Alert Name",
+            "name": "Alert_name",
+            "type": "text",
+            "tooltip": "Specify the name of the Alert Name to retrieve its details from the Purview Portal. ",
+            "description": "Specify the name of the Alert Name to retrieve its details from the Purview Portal. ",
+            "required": true,
+            "editable": true,
+            "visible": true
+          }
+        ],
+        "enabled": true
+      },
+      {
+        "operation": "update_Alerts",
+        "title": "Update Alerts",
+        "description": "Update Alerts. ",
+        "category": "investigation",
+        "annotation": "get_alerts",
+        "parameters": [
+          {
+            "title": "Alert Name",
+            "name": "Alert_name",
+            "type": "text",
+            "tooltip": "Specify the name of the Alert Name to retrieve its details from the Purview Portal. ",
+            "description": "Specify the name of the Alert Name to retrieve its details from the Purview Portal. ",
+            "required": true,
+            "editable": true,
+            "visible": true
+          },
+          {
+            "title": "DATA",
+            "name": "DATA",
+            "type": "text",
+            "tooltip": "Specify the name of the DATA to be updated on the Purview Portal. ",
+            "description": "Specify the name of the DATA to be updated on the Purview Portal. ",
+            "required": true,
+            "editable": true,
+            "visible": true
+          }
+        ],
+        "enabled": true
+      },
+      {
+        "operation": "get_all_Alerts",
+        "title": "Get All Alerts",
+        "description": "Get All Alerts. ",
+        "category": "investigation",
+        "annotation": "get_alerts",
+        "parameters": [
+        ],
+        "enabled": true
+      }
+    ]
+  }
+  
